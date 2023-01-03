@@ -5,18 +5,26 @@ void PhoneBook::addContact(Contact contact, int *index) {
 		*index = 0;
 	this->contacts[*index] = contact;
 	*index += 1;
+	if (this->contactNumber < 8)
+		this->contactNumber += 1;
 }
 
-void PhoneBook::displayContacts(int index)
+void PhoneBook::displayContacts()
 {
-	for (int i = 0; i < index; i++)
+	std::string display;
+	std::cout << std::string(66, '*') << std::endl;
+	for (int i = 0; i < this->contactNumber; i++)
 	{
-		std::cout << i << " ";
-		std::cout << this->contacts[i].getInfo(0) << "|";
-		std::cout << this->contacts[i].getInfo(1) << "|";
-		std::cout << this->contacts[i].getInfo(2) << "|";
-		std::cout << this->contacts[i].getInfo(3) << "|";
-		std::cout << this->contacts[i].getInfo(4) << std::endl;
+		std::cout << i << std::setw(10) << "|";
+		for (int j = 0; j < 5; j++)
+		{
+			display = this->contacts[i].getInfo(j);
+			if (display.length() > 10)
+				display = display.substr(0, 9) + ".";
+			std::cout << display << std::setw(11 - display.length()) << "|";
+		}
+		std::cout << std::endl;
+		std::cout << std::string(66, '*') << std::endl;
 	}
 }
 
