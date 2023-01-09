@@ -34,7 +34,7 @@ int main() {
 			phoneBook.displayContacts(contactNum);
 			int index;
 			std::cin >> index;
-			phoneBook.searchContact(atoi(index));
+			phoneBook.searchContact(index);
 		}
 	}
 	return 0;
