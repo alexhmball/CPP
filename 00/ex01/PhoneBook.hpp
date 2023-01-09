@@ -10,10 +10,12 @@ class PhoneBook {
 
 	private:
 		Contact contacts[8];
+		int		contactNumber;
 	public:
 		void addContact(Contact contact, int *index);
 		void searchContact(int index);
-		void displayContacts(int index);
+		void displayContacts();
 };
+
 #endif
 #endif
