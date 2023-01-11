@@ -5,7 +5,7 @@ SRC = Account.cpp tests.cpp
 all: $(NAME)
 
 $(NAME): $(SRC)
-	g++ -g -Wall -Wextra -Werror -std=c++98 $(SRC) -o $(NAME)
+	c++ -g -Wall -Wextra -Werror -std=c++98 $(SRC) -o $(NAME)
 
 clean:
 	rm -f $(NAME)

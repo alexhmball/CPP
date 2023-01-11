@@ -1,11 +1,11 @@
-NAME = Harl
+NAME =  harlFilter
 
 SCRS = main.cpp Harl.cpp
 
 all: $(NAME)
 
 $(NAME): $(SCRS)
-	c++ -g -Wall -Wextra -Werror -std=c++98 ${SCRS} -o $(NAME)
+	c++ -Wall -Wextra -Werror -std=c++98 ${SCRS} -o $(NAME)
 
 clean:
 	rm -fr ${NAME}

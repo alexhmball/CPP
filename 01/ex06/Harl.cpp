@@ -23,33 +23,35 @@ void Harl::error(void){
 
 void Harl::invalid(void){
 	std::cout << "~INVALID~" << std::endl;
-	std::cout << "rambling nonsense" << std::endl;
+	std::cout << "* rambling nonsense *" << std::endl;
 }
 
 void Harl::complain(std::string level){
+	if (level.empty())
+		return;
 	std::string complaints[] = {"DEBUG", "INFO", "WARNING", "ERROR", ""};
-	complaintsMsg rude;
-	Harl man;
+	complaintsMsg rude[] = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+		&Harl::invalid,
+	};
 	int i = 0;
-	while (complaints[i] != level && i < 4)
+	while (level.compare(complaints[i]) && i < 4)
 		i++;
 	switch (i)
 	{
 		case 0:
-			rude = &Harl::debug;
-			break;
+			(this->*rude[0])();
 		case 1:
-			rude = &Harl::info;
-			break;
+			(this->*rude[1])();
 		case 2:
-			rude = &Harl::warning;
-			break;
+			(this->*rude[2])();
 		case 3:
-			rude = &Harl::error;
+			(this->*rude[3])();
 			break;
 		case 4:
-			rude = &Harl::invalid;
-			break;
+			(this->*rude[4])();
 	}
-	(man.*rude)();
 }
