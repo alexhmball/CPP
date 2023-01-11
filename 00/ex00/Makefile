@@ -8,9 +8,10 @@ $(NAME): $(SRCS)
 	g++ -Wall -Wextra -Werror -std=c++98 $(SCRS) -o $(NAME)
 
 clean:
-
-fclean: clean
 	rm -fr $(NAME)
+	
+fclean: clean
+
 
 re: fclean all
 

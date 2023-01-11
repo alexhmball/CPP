@@ -7,13 +7,13 @@
 #define GRN(x) GREEN x RESET
 
 
-bool isOutOfBounds(std::string index, int contactNum) 
+bool isOutOfBounds(std::string index, PhoneBook phoneBook)
 {
 	if (index.length() == 1)
 	{
 		if (index[0] >= '0' || index[0] < '9')
 		{
-			if (index[0] <= contactNum + '0')
+			if (index[0] <= phoneBook.getContactNum() + '0')
 				return true;
 		}
 		std::cout << RD("Invalid index: ") << index << std::endl;
@@ -23,7 +23,7 @@ bool isOutOfBounds(std::string index, int contactNum)
 	return false;
 }
 
-int main(void) 
+int main(void)
 {
 	std::string input;
 	std::string instruction[5] = {"First name", "Last name", "Nickname", "Phone number", "Darkest secret"};
@@ -65,7 +65,7 @@ int main(void)
 			phoneBook.displayContacts();
 			std::string index = "";
 			int search;
-			while (index.empty() || !isOutOfBounds(index, contactNum - 1))
+			while (index.empty() || !isOutOfBounds(index, phoneBook))
 			{
 				std::cout << "Enter index: ";
 				if (std::cin.fail())
