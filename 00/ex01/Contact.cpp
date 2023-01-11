@@ -3,19 +3,19 @@
 void Contact::insertInfo(std::string info, int index) {
 	switch (index) {
 		case 0:
-			this->firstName = info;
+			firstName = info;
 			break;
 		case 1:
-			this->lastName = info;
+			lastName = info;
 			break;
 		case 2:
-			this->nickname = info;
+			nickname = info;
 			break;
 		case 3:
-			this->phoneNumber = info;
+			phoneNumber = info;
 			break;
 		case 4:
-			this->darkestSecret = info;
+			darkestSecret = info;
 			break;
 	}
 }
@@ -25,13 +25,13 @@ std::string Contact::getInfo(int index) {
 		case 0:
 			return firstName;
 		case 1:
-			return this->lastName;
+			return lastName;
 		case 2:
-			return this->nickname;
+			return nickname;
 		case 3:
-			return this->phoneNumber;
+			return phoneNumber;
 		case 4:
-			return this->darkestSecret;
+			return darkestSecret;
 	}
 	return NULL;
 }
