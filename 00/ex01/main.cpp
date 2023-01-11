@@ -57,12 +57,6 @@ int main(void)
 		}
 		else if (input == "SEARCH")
 		{
-<<<<<<< HEAD:00/ex01/main.cpp
-			phoneBook.displayContacts(contactNum);
-			int index;
-			std::cin >> index;
-			phoneBook.searchContact(index);
-=======
 			if (contactNum == 0)
 			{
 				std::cout << RD("No contacts to display") << std::endl;
@@ -82,7 +76,6 @@ int main(void)
 			phoneBook.searchContact(search);
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
->>>>>>> 7b131725b5a24aaa60a74ad0d8a268689423e744:ex01/main.cpp
 		}
 		else
 			std::cout << RD("Invalid command: expected ADD, SEARCH, or EXIT") << std::endl;

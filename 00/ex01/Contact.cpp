@@ -23,7 +23,7 @@ void Contact::insertInfo(std::string info, int index) {
 std::string Contact::getInfo(int index) {
 	switch (index) {
 		case 0:
-			return this->firstName;
+			return firstName;
 		case 1:
 			return this->lastName;
 		case 2:
