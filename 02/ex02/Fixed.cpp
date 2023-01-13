@@ -33,7 +33,10 @@ Fixed& Fixed::operator=(const Fixed &F) {
 }
 
 Fixed& Fixed::operator+(const Fixed &F) {
-	
+	Fixed &result;
+
+	result.value = value + F.value;
+	return result;
 }
 
 float Fixed::toFloat() const {
