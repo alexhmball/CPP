@@ -13,7 +13,7 @@ bool isOutOfBounds(std::string index, PhoneBook phoneBook)
 	{
 		if (index[0] >= '0' || index[0] < '9')
 		{
-			if (index[0] <= phoneBook.getContactNum() + '0')
+			if (index[0] < phoneBook.getContactNum() + '0')
 				return true;
 		}
 		std::cout << RD("Invalid index: ") << index << std::endl;

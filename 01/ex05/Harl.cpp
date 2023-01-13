@@ -29,7 +29,6 @@ void Harl::invalid(void){
 void Harl::complain(std::string level){
 	std::string complaints[] = {"DEBUG", "INFO", "WARNING", "ERROR", ""};
 	complaintsMsg rude;
-	Harl man;
 	int i = 0;
 	while (complaints[i] != level && i < 4)
 		i++;
@@ -51,5 +50,5 @@ void Harl::complain(std::string level){
 			rude = &Harl::invalid;
 			break;
 	}
-	(man.*rude)();
+	(this->*rude)();
 }
