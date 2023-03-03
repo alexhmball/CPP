@@ -58,46 +58,48 @@ Fixed& Fixed::operator=(const Fixed &F) {
 
 Fixed& Fixed::operator+(const Fixed &F) {
 	Fixed *tmp = new Fixed();
-	tmp->value = this->value + F.value;
+	tmp->value = floor((this->toFloat() + F.toFloat()) * (1 << bits));
 	return *tmp;
 }
 
 Fixed& Fixed::operator-(const Fixed &F) {
 	Fixed *tmp = new Fixed();
-	tmp->value = this->value - F.value;
+	tmp->value = floor((this->toFloat() - F.toFloat()) * (1 << bits));
 	return *tmp;
 }
 
 Fixed& Fixed::operator*(const Fixed &F) {
 	Fixed *tmp = new Fixed();
-	tmp->value = this->value * F.value;
+	tmp->value = floor((this->toFloat() * F.toFloat()) * (1 << bits));
 	return *tmp;
 }
 
 Fixed& Fixed::operator/(const Fixed &F) {
 	Fixed *tmp = new Fixed();
-	tmp->value = this->value / F.value;
+	tmp->value = floor((this->toFloat() / F.toFloat()) * (1 << bits));
 	return *tmp;
 }
 
 Fixed& Fixed::operator++(void) {
-	this->value++;
+	++this->value;
 	return *this;
 }
 
 Fixed& Fixed::operator--(void) {
-	this->value--;
+	--this->value;
 	return *this;
 }
 
 Fixed Fixed::operator++(int) {
-	this->value++;
-	return *this;
+	Fixed num = *this;
+	value++;
+	return num;
 }
 
 Fixed Fixed::operator--(int) {
-	this->value--;
-	return *this;
+	Fixed num = *this;
+	value--;
+	return num;
 }
 
 Fixed& Fixed::min(Fixed &a, Fixed &b) {
