@@ -8,12 +8,24 @@ Fixed::Fixed(){
 }
 
 Fixed::Fixed(const int value) {
-	this->value = value << bits;
+	if (value > FIXED_MAX || value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
+	else
+		this->value = value << bits;
 }
 
 Fixed::Fixed(const float value) {
 	std::cout << "float constructor called" << std::endl;
-	this->value = roundf(value * (1 << bits));
+	if (value > FIXED_MAX || value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
+	else
+		this->value = roundf(value * (1 << bits));
 }
 
 Fixed::Fixed(const Fixed &F){
@@ -25,27 +37,27 @@ Fixed::~Fixed(){
 	std::cout << "Deconstructor called" << std::endl;
 }
 
-int Fixed::operator>(const Fixed &F){
+bool Fixed::operator>(const Fixed &F){
 	return this->value > F.value;
 }
 
-int Fixed::operator<(const Fixed &F){
+bool Fixed::operator<(const Fixed &F){
 	return this->value < F.value;
 }
 
-int Fixed::operator>=(const Fixed &F){
+bool Fixed::operator>=(const Fixed &F){
 	return this->value >= F.value;
 }
 
-int Fixed::operator<=(const Fixed &F){
+bool Fixed::operator<=(const Fixed &F){
 	return this->value <= F.value;
 }
 
-int Fixed::operator==(const Fixed &F){
+bool Fixed::operator==(const Fixed &F){
 	return this->value == F.value;
 }
 
-int Fixed::operator!=(const Fixed &F){
+bool Fixed::operator!=(const Fixed &F){
 	return this->value != F.value;
 }
 
@@ -56,53 +68,65 @@ Fixed& Fixed::operator=(const Fixed &F) {
 	return *this;
 }
 
-Fixed& Fixed::operator+(const Fixed &F) {
-	Fixed* tmp2 = new Fixed();
-	tmp2->value = floor((this->toFloat() + F.toFloat()) * (1 << bits));
-	delete tmp2;
-	return *tmp2;
+Fixed Fixed::operator+(const Fixed &F) {
+	Fixed tmp((this->toFloat() + F.toFloat()));
+	return tmp;
 }
 
-Fixed& Fixed::operator-(const Fixed &F) {
-	Fixed *tmp = new Fixed();
-	tmp->value = floor((this->toFloat() - F.toFloat()) * (1 << bits));
-	delete tmp;
-	return *tmp;
+Fixed Fixed::operator-(const Fixed &F) {
+	Fixed tmp((this->toFloat() - F.toFloat()));
+	return tmp;
 }
 
-Fixed& Fixed::operator*(const Fixed &F) {
-	Fixed *tmp = new Fixed();
-	tmp->value = floor((this->toFloat() * F.toFloat()) * (1 << bits));
-	delete tmp;
-	return *tmp;
+Fixed Fixed::operator*(const Fixed &F) {
+	Fixed tmp((this->toFloat() * F.toFloat()));
+	return tmp;
 }
 
-Fixed& Fixed::operator/(const Fixed &F) {
-	Fixed *tmp = new Fixed();
-	tmp->value = floor((this->toFloat() / F.toFloat()) * (1 << bits));
-	delete tmp;
-	return *tmp;
+Fixed Fixed::operator/(const Fixed &F) {
+	Fixed tmp((this->toFloat() / F.toFloat()));
+	return tmp;
 }
 
 Fixed& Fixed::operator++(void) {
 	++this->value;
+	if (this->value > FIXED_MAX || this->value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
 	return *this;
 }
 
 Fixed& Fixed::operator--(void) {
 	--this->value;
+	if (this->value > FIXED_MAX || this->value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
 	return *this;
 }
 
 Fixed Fixed::operator++(int) {
 	Fixed num = *this;
 	value++;
+	if (value > FIXED_MAX || value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
 	return num;
 }
 
 Fixed Fixed::operator--(int) {
 	Fixed num = *this;
 	value--;
+	if (value > FIXED_MAX || value < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
 	return num;
 }
 
@@ -145,7 +169,13 @@ int Fixed::getRawBits(void) const {
 
 void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called" << std::endl;
-	value = raw;
+	if (raw > FIXED_MAX || raw < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
+	else
+		value = raw;
 }
 
 std::ostream& operator<<(std::ostream &os, const Fixed &F) {

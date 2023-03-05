@@ -17,8 +17,8 @@ int main( void ) {
 	Fixed d;
 
 
-	c.setRawBits(1);
-	d.setRawBits(1);
+	c.setRawBits(0);
+	d.setRawBits(0);
 	std::cout << ++c << std::endl;
 	std::cout << --d << std::endl;
 
@@ -33,6 +33,17 @@ int main( void ) {
 
 	std::cout << c.max(c, d) << std::endl;
 	std::cout << d.min(c, d) << std::endl;
+
+	c = -999999;
+
+	std::cout << c << std::endl;
+	std::cout << ++c << std::endl;
+	std::cout << ++c << std::endl;
+
+	c.setRawBits(955999799);
+	std::cout << c << std::endl;
+	std::cout << ++c << std::endl;
+	std::cout << ++c << std::endl;
 
 	return 0;
 }

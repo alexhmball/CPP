@@ -2,6 +2,8 @@
 #define FIXED
 
 #include <ostream>
+#define FIXED_MAX 999999
+#define FIXED_MIN -999999
 
 class Fixed {
 	private:
@@ -13,16 +15,16 @@ class Fixed {
 		Fixed(const float value);
 		Fixed(const Fixed &F);
 		Fixed& operator=(const Fixed &F);
-		Fixed& operator+(const Fixed &F);
-		Fixed& operator-(const Fixed &F);
-		Fixed& operator*(const Fixed &F);
-		Fixed& operator/(const Fixed &F);
-		int    operator>(const Fixed &F);
-		int    operator<(const Fixed &F);
-		int    operator>=(const Fixed &F);
-		int    operator<=(const Fixed &F);
-		int    operator==(const Fixed &F);
-		int    operator!=(const Fixed &F);
+		Fixed operator+(const Fixed &F);
+		Fixed operator-(const Fixed &F);
+		Fixed operator*(const Fixed &F);
+		Fixed operator/(const Fixed &F);
+		bool operator>(const Fixed &F);
+		bool operator<(const Fixed &F);
+		bool operator>=(const Fixed &F);
+		bool operator<=(const Fixed &F);
+		bool operator==(const Fixed &F);
+		bool operator!=(const Fixed &F);
 		Fixed& operator++(void);
 		Fixed& operator--(void);
 		Fixed operator++(int);
