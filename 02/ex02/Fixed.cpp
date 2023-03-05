@@ -75,9 +75,8 @@ Fixed& Fixed::operator*(const Fixed &F) {
 }
 
 Fixed& Fixed::operator/(const Fixed &F) {
-	Fixed *tmp = new Fixed();
-	tmp->value = floor((this->toFloat() / F.toFloat()) * (1 << bits));
-	return *tmp;
+	Fixed tmp(floor((this->toFloat() / F.toFloat()) * (1 << bits)));
+	return tmp;
 }
 
 Fixed& Fixed::operator++(void) {
