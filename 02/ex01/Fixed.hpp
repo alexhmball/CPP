@@ -3,7 +3,7 @@
 
 #include <ostream>
 #define FIXED_MAX 999999
-#define FIXED_MIN 999999 * -1
+#define FIXED_MIN -999999
 
 class Fixed {
 	private:

@@ -29,5 +29,11 @@ int Fixed::getRawBits(void) const {
 
 void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called" << std::endl;
-	value = raw;
+	if (raw > FIXED_MAX || raw < FIXED_MIN)
+	{
+		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
+		this->value = 0;
+	}
+	else
+		value = raw;
 }

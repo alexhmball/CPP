@@ -15,12 +15,12 @@ Fixed::Fixed(const int value) {
 		this->value = 0;
 	}
 	else
-		this->value = value;
+		this->value = value << bits;
 }
 
 Fixed::Fixed(const float value) {
 	std::cout << "float constructor called" << std::endl;
-		if (value > FIXED_MAX || value < FIXED_MIN)
+	if (value > FIXED_MAX || value < FIXED_MIN)
 	{
 		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
 		this->value = 0;
@@ -60,13 +60,13 @@ int Fixed::getRawBits(void) const {
 
 void Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called" << std::endl;
-		if (raw > FIXED_MAX || raw < FIXED_MIN)
+	if (raw > FIXED_MAX || raw < FIXED_MIN)
 	{
 		std::cout << "warning: overflow detected, value being set to 0" << std::endl;
 		this->value = 0;
 	}
 	else
-		value = roundf(raw << bits);
+		value = raw;
 }
 
 std::ostream& operator<<(std::ostream &os, const Fixed &F) {
