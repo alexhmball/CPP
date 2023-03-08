@@ -1,5 +1,6 @@
 #include "ScavTrap.hpp"
 
+
 ScavTrap::ScavTrap() {
 	std::cout << "ScavTrap default constructor called" << std::endl;
 	this->name = "ScavTrap";
