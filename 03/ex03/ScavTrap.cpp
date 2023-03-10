@@ -46,7 +46,7 @@ void ScavTrap::attack(std::string const &target) {
 		std::cout << "ScavTrap " << this->name << " attacks " << target << " and deals " << attackDamage << " damage." << std::endl;
 	}
 	else if (this->energyPoints <= 0)
-		std::cout << "ScavTrap" << this->name << " has no energy left!" << std::endl;
+		std::cout << "ScavTrap " << this->name << " has no energy left!" << std::endl;
 	else if (this->hitPoints <= 0)
-		std::cout << "ScavTrap" << this ->name << " is dead, cannot attack!" << std::endl;
+		std::cout << "ScavTrap " << this ->name << " is dead, cannot attack!" << std::endl;
 }
