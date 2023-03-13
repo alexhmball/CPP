@@ -1,6 +1,6 @@
-NAME = ClapTrap
+NAME = Animal
 
-SRCS = ClapTrap.cpp main.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
+SRCS = Cat.cpp Dog.cpp main.cpp Animal.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

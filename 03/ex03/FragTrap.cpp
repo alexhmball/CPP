@@ -1,39 +1,39 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap () {
-	std::cout << "FragTrap default constructor called" << std::endl;
-	this->name = "FragTrap";
-	this->hitPoints = 100;
-	this->energyPoints = 100;
-	this->attackDamage = 30;
+	std::cout << "FragTrap default constructor called\n";
+	name = "FragTrap";
+	hitPoints = 100;
+	energyPoints = 100;
+	attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string name) {
-	std::cout << "FragTrap constructor called" << std::endl;
+	std::cout << "FragTrap constructor called\n";
 	this->name = name;
-	this->hitPoints = 100;
-	this->energyPoints = 100;
-	this->attackDamage = 30;
+	hitPoints = 100;
+	energyPoints = 100;
+	attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &frag) {
-	std::cout << "FragTrap copy constructor called" << std::endl;
+	std::cout << "FragTrap copy constructor called\n";
 	*this = frag;
 }
 
 FragTrap::~FragTrap() {
-	std::cout << "FragTrap deconstructor called" << std::endl;
+	std::cout << "FragTrap deconstructor called\n";
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &frag) {
-	std::cout << "FragTrap copy assignment operator called" << std::endl;
-	this->name = frag.name;
-	this->hitPoints = frag.hitPoints;
-	this->energyPoints = frag.energyPoints;
-	this->attackDamage = frag.attackDamage;
+	std::cout << "FragTrap copy assignment operator called\n";
+	name = frag.name;
+	hitPoints = frag.hitPoints;
+	energyPoints = frag.energyPoints;
+	attackDamage = frag.attackDamage;
 	return *this;
 }
 
 void FragTrap::highFiveGuys(void) {
-	std::cout << "FragTrap " << this->name << ": \"High five guys!\"" << std::endl;
+	std::cout << "FragTrap " << name << ": \"High five guys!\"\n";
 }

@@ -1,8 +1,8 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() {
-	std::cout << "DiamondTrap default constructor called" << std::endl;
-	this->name = "DiamondTrap";
+	std::cout << "DiamondTrap default constructor called\n";
+	name = "DiamondTrap";
 	ClapTrap::name = name + "_clap_name";
 	hitPoints = FragTrap::hitPoints;
 	energyPoints = ScavTrap::energyPoints;
@@ -10,7 +10,7 @@ DiamondTrap::DiamondTrap() {
 }
 
 DiamondTrap::DiamondTrap(std::string name) {
-	std::cout << "DiamondTrap constructor called" << std::endl;
+	std::cout << "DiamondTrap constructor called\n";
 	this->name = name;
 	ClapTrap::name = name + "_clap_name";
 	hitPoints = FragTrap::hitPoints;
@@ -19,12 +19,12 @@ DiamondTrap::DiamondTrap(std::string name) {
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &dia) {
-	std::cout << "DiamondTap copy constructor called" << std::endl;
+	std::cout << "DiamondTap copy constructor called\n";
 	*this = dia;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &dia) {
-	std::cout << "DiamondTrap assignment operator called" << std::endl;
+	std::cout << "DiamondTrap assignment operator called\n";
 	name = dia.name;
 	ClapTrap::name = dia.ClapTrap::name;
 	hitPoints = dia.hitPoints;
@@ -34,9 +34,9 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &dia) {
 }
 
 DiamondTrap::~DiamondTrap() {
-	std::cout << "DiamondTrap deconstructor called" << std::endl;
+	std::cout << "DiamondTrap deconstructor called\n";
 }
 
 void DiamondTrap::whoAmI() {
-	std::cout << "DiamondTrap Real name: " << this->name  << "  ClapTrap name: " << ClapTrap::name << std::endl;
+	std::cout << "DiamondTrap Real name: " << name  << "  ClapTrap name: " << ClapTrap::name << "\n";
 }

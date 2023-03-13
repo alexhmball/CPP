@@ -20,7 +20,7 @@ int main(void) {
 	billyJoeBob.highFiveGuys();
 	billyJoeBob.whoAmI();
 	randy.whoAmI();
-	for (int i = 0; i < 102; i++)
+	for (int i = 1; i <= 51; i++)
 	{
 		std::cout << i << ":  ";
 		randy.attack("random");
