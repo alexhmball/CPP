@@ -1,10 +1,10 @@
 #ifndef CAT
 #define CAT
 
-#include "Animal.hpp"
+#include "UnAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat: public Animal {
+class Cat: public UnAnimal {
 	private:
 		Brain *brain;
 	public:

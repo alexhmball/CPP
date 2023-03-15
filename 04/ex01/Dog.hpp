@@ -14,6 +14,8 @@ class Dog: public Animal {
 		Dog &operator=(const Dog &C);
 		void makeSound() const;
 		std::string getType() const;
+		void insertThought(std::string idea);
+		void printThoughts() const;
 };
 
 #endif

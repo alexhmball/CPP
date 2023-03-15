@@ -1,17 +1,17 @@
-#ifndef CAT
-#define CAT
+#ifndef DOG
+#define DOG
 
-#include "Animal.hpp"
+#include "UnAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat: public Animal {
+class Dog: public UnAnimal {
 	private:
 		Brain *brain;
 	public:
-		Cat();
-		Cat(const Cat &C);
-		~Cat();
-		Cat &operator=(const Cat &C);
+		Dog();
+		Dog(const Dog &C);
+		~Dog();
+		Dog &operator=(const Dog &C);
 		void makeSound() const;
 		std::string getType() const;
 		void insertThought(std::string idea);

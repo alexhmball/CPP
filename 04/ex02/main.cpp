@@ -1,19 +1,15 @@
-#include "Animal.hpp"
+// #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+// #include "WrongAnimal.hpp"
+// #include "WrongCat.hpp"
+#include "UnAnimal.hpp"
 
 int main() {
-const Animal* snoop = new Dog();
-const Animal* doja = new Cat();
-Animal *arr[10];
-Animal test;
-
-Dog *test1 = new Dog();
-Dog *test2 = new Dog();
-
-test1 = test2;
+const UnAnimal* snoop = new Dog();
+const UnAnimal* doja = new Cat();
+// UnAnimal test;
+UnAnimal *arr[10];
 
 for (int i = 0; i < 10; i++)
 {
@@ -44,6 +40,16 @@ std::cout << "\n\n";
 
 Dog copyDog(newDog);
 
+
+Dog *a = new Dog();
+Dog *b = new Dog();
+
+b = a;
+
+b->makeSound();
+a->makeSound();
+
+
 std::cout << "\n\n";
 
 copyDog.printThoughts();
@@ -65,5 +71,7 @@ delete snoop;
 delete doja;
 for (int i = 0; i < 10; i++)
 	delete arr[i];
+delete a;
+delete b;
 return 0;
 }
