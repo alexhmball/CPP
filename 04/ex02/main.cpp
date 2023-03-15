@@ -3,17 +3,13 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include "UnAnimal.hpp"
 
 int main() {
-const Animal* snoop = new Dog();
-const Animal* doja = new Cat();
-Animal *arr[10];
-Animal test;
-
-Dog *test1 = new Dog();
-Dog *test2 = new Dog();
-
-test1 = test2;
+const UnAnimal* snoop = new Dog();
+const UnAnimal* doja = new Cat();
+// UnAnimal test;
+UnAnimal *arr[10];
 
 for (int i = 0; i < 10; i++)
 {
@@ -43,6 +39,12 @@ newDog.printThoughts();
 std::cout << "\n\n";
 
 Dog copyDog(newDog);
+
+
+Dog *a = new Dog();
+Dog *b = new Dog();
+
+b = a;
 
 std::cout << "\n\n";
 
