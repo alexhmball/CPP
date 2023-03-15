@@ -1,7 +1,7 @@
 #ifndef CAT
 #define CAT
 
-#include "Animal.hpp"
+#include "UnAnimal.hpp"
 #include "Brain.hpp"
 
 class Cat: public UnAnimal {

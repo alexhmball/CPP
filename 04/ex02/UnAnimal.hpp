@@ -12,7 +12,7 @@ class UnAnimal {
 		UnAnimal(const UnAnimal &A);
 		virtual ~UnAnimal();
 		UnAnimal &operator=(const UnAnimal &A);
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 		std::string getType() const;
 };
 

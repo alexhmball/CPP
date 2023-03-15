@@ -1,8 +1,8 @@
-#include "Animal.hpp"
+// #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+// #include "WrongAnimal.hpp"
+// #include "WrongCat.hpp"
 #include "UnAnimal.hpp"
 
 int main() {
@@ -46,6 +46,10 @@ Dog *b = new Dog();
 
 b = a;
 
+b->makeSound();
+a->makeSound();
+
+
 std::cout << "\n\n";
 
 copyDog.printThoughts();
@@ -67,5 +71,7 @@ delete snoop;
 delete doja;
 for (int i = 0; i < 10; i++)
 	delete arr[i];
+delete a;
+delete b;
 return 0;
 }

@@ -2,6 +2,7 @@
 
 Brain::Brain() {
 	std::cout << "Brain default constructor called\n";
+	i = 0;
 }
 
 Brain::Brain(const Brain &B) {
@@ -12,7 +13,10 @@ Brain::Brain(const Brain &B) {
 Brain &Brain::operator=(const Brain &B) {
 	std::cout << "Brain copy assignment operator called\n";
 	for (int x = 0; x < 100; x++)
-		ideas[x] = B.ideas[x];
+	{
+		if (!B.ideas[x].empty())
+			ideas[x] = B.ideas[x];
+	}
 	this->i = B.i;
 	return *this;
 }

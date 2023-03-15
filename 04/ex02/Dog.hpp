@@ -1,7 +1,7 @@
 #ifndef DOG
 #define DOG
 
-#include "Animal.hpp"
+#include "UnAnimal.hpp"
 #include "Brain.hpp"
 
 class Dog: public UnAnimal {
