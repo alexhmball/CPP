@@ -18,7 +18,7 @@ Dog::~Dog() {
 }
 
 Dog &Dog::operator=(const Dog &A) {
-	std::cout << "Dog copy constructor called\n";
+	std::cout << "Dog copy assignment operator called\n";
 	if (this != &A)
 	{
 		type = A.type;

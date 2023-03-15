@@ -14,8 +14,9 @@ Brain &Brain::operator=(const Brain &B) {
 	std::cout << "Brain copy assignment operator called\n";
 	for (int x = 0; x < 100; x++)
 	{
-		if (!B.ideas[x].empty())
-			ideas[x] = B.ideas[x];
+		if (B.ideas[x].empty())
+			break ;
+		ideas[x] = B.ideas[x];	
 	}
 	this->i = B.i;
 	return *this;

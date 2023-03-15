@@ -44,7 +44,7 @@ Dog copyDog(newDog);
 Dog *a = new Dog();
 Dog *b = new Dog();
 
-b = a;
+*b = *a;
 
 b->makeSound();
 a->makeSound();
