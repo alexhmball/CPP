@@ -10,7 +10,7 @@ class UnAnimal {
 	public:
 		UnAnimal();
 		UnAnimal(const UnAnimal &A);
-		virtual ~UnAnimal() = 0;
+		virtual ~UnAnimal();
 		UnAnimal &operator=(const UnAnimal &A);
 		virtual void makeSound() const;
 		std::string getType() const;
