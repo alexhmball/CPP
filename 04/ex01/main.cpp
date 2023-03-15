@@ -5,8 +5,8 @@
 #include "WrongCat.hpp"
 
 int main() {
-const Animal* j = new Dog();
-const Animal* i = new Cat();
+const Animal* snoop = new Dog();
+const Animal* doja = new Cat();
 Animal *arr[10];
 
 for (int i = 0; i < 10; i++)
@@ -15,15 +15,48 @@ for (int i = 0; i < 10; i++)
 	{
 		arr[i] = new Cat();
 		arr[i]->makeSound();
+		std::cout << "\n";
 	}
 	else
 	{
 		arr[i] = new Dog();
 		arr[i]->makeSound();
+		std::cout << "\n";
 	}
 }
-delete j;
-delete i;
+
+std::cout << "\n\n";
+
+Dog newDog;
+
+std::cout << "\n\n";
+
+newDog.insertThought("eat cat food");
+newDog.printThoughts();
+
+std::cout << "\n\n";
+
+Dog copyDog(newDog);
+
+std::cout << "\n\n";
+
+copyDog.printThoughts();
+
+std::cout << "\n\n";
+
+newDog.insertThought("maybe don't eat cat food");
+
+for (int i = 0; i < 101; i++)
+	copyDog.insertThought("definitly eat the cat food");
+
+newDog.printThoughts();
+std::cout << "\n\n";
+
+copyDog.printThoughts();
+std::cout << "\n\n";
+
+delete snoop;
+delete doja;
 for (int i = 0; i < 10; i++)
 	delete arr[i];
 return 0;

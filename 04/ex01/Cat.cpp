@@ -19,6 +19,7 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &A) {
 	std::cout << "Animal copy constructor called\n";
 	type = A.type;
+	brain = new Brain(*A.brain);
 	return *this;
 }
 
@@ -28,4 +29,12 @@ std::string Cat::getType() const {
 
 void Cat::makeSound() const {
 	std::cout << "~CAT NOISES~\n";
+}
+
+void Cat::insertThought(std::string idea) {
+	brain->insertIdea(idea);
+}
+
+void Cat::printThoughts() const {
+	brain->printIdeas();
 }

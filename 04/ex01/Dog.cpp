@@ -19,6 +19,7 @@ Dog::~Dog() {
 Dog &Dog::operator=(const Dog &A) {
 	std::cout << "Dog copy constructor called\n";
 	type = A.type;
+	brain = new Brain(*A.brain);
 	return *this;
 }
 
@@ -28,4 +29,12 @@ std::string Dog::getType() const {
 
 void Dog::makeSound() const {
 	std::cout << "~DOG NOISES~\n";
+}
+
+void Dog::insertThought(std::string idea) {
+	brain->insertIdea(idea);
+}
+
+void Dog::printThoughts() const {
+	brain->printIdeas();
 }
