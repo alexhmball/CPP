@@ -13,7 +13,9 @@ Animal test;
 Dog *test1 = new Dog();
 Dog *test2 = new Dog();
 
-test1 = test2;
+*test1 = *test2;
+test1->makeSound();
+test2->makeSound();
 
 for (int i = 0; i < 10; i++)
 {
@@ -65,5 +67,7 @@ delete snoop;
 delete doja;
 for (int i = 0; i < 10; i++)
 	delete arr[i];
+delete test1;
+delete test2;
 return 0;
 }

@@ -2,6 +2,7 @@
 
 Brain::Brain() {
 	std::cout << "Brain default constructor called\n";
+	i = 0;
 }
 
 Brain::Brain(const Brain &B) {
