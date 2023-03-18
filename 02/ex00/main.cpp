@@ -1,5 +1,6 @@
 #include "Fixed.hpp"
 #include <iostream>
+#include <climits>
 
 int main( void ) {
 	Fixed a;
@@ -10,7 +11,7 @@ int main( void ) {
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
 
-	a.setRawBits(42);
+	a.setRawBits(INT_MAX);
 	c = a;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;

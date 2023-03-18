@@ -1,6 +1,9 @@
 #ifndef FIXED
 #define FIXED
 
+#define FIXED_MAX 999999
+#define FIXED_MIN -999999
+
 class Fixed {
 	private:
 		int value;
