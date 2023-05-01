@@ -3,18 +3,15 @@
 
 int	main(void) {
 	Bureaucrat homie("Homer", 200);
-	AForm important("super important AForm");
+	// AForm important("super important AForm");
 
 	std::cout << homie;
 	homie.decrement();
 	homie.decrement();
-	std:: cout << important;
-	homie.signAForm(important);
 	std::cout << homie;
 	for (int i = 0; i < 152; i++)
 	{
 		homie.increment();
 	}
 	std::cout << homie;
-	homie.signAForm(important);
 }

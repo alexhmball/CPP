@@ -1,5 +1,5 @@
-#ifndef AForm
-#define AForm
+#ifndef AFORM
+#define AFORM
 
 #include <iostream>
 #include <string>
@@ -32,6 +32,7 @@ class AForm {
 		int getSignatureGrade( void ) const;
 		int getExcecutionGrade( void ) const;
 		void beSigned(Bureaucrat &B);
+		virtual void execute(Bureaucrat const & executor) = 0;
 };
 
 std::ostream& operator<<(std::ostream &os, const AForm &F);

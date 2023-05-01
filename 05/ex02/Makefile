@@ -1,6 +1,6 @@
 NAME = Bureaucrat
 
-SRCS = Bureaucrat.cpp main.cpp AForm.cpp
+SRCS = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequest
 
 OBJS = $(SRCS:.cpp=.o)
 
