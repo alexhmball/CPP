@@ -5,8 +5,13 @@ AForm::AForm( ) : name("CLASSIFIED"), signature(false), signature_grade(50), exe
 	std::cout << "AForm default constructor called\n";
 }
 
-AForm::AForm(const std::string name) : name(name) , signature_grade(50), execute_grade(50) {
+AForm::AForm(const std::string name) : name(name), signature(false), signature_grade(50), execute_grade(50) {
 	std::cout << "AForm constructor called\n";
+}
+
+AForm::AForm( const std::string name, int sig_grade, int exec_grade) : name(name), signature(false), signature_grade(sig_grade), execute_grade(exec_grade) {
+	std::cout << "AForm base constructor called\n";
+
 }
 
 AForm::AForm( const AForm &F) : name(F.name), signature_grade(F.signature_grade), execute_grade(F.execute_grade) {
@@ -29,11 +34,15 @@ AForm &AForm::operator=(const AForm &F) {
 }
 
 const char * AForm::GradeTooHighException::what( ) const throw ( ) {
-	return "AForm grade too High\n";
+	return "Form grade too High\n";
 }
 
 const char * AForm::GradeTooLowException::what( ) const throw ( ) {
-	return "AForm grade too Low\n";
+	return "Form grade too Low\n";
+}
+
+const char * AForm::NotSignedException::what( ) const throw ( ) {
+	return "Form not signed\n";
 }
 
 std::string AForm::getName( void ) const {

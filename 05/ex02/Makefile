@@ -1,10 +1,11 @@
 NAME = Bureaucrat
 
-SRCS = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequest
+SRCS = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp
+# RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INC = Bureaucrat.hpp AForm.hpp
+INC = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp ShrubberyCreationForm.hpp
 
 CC = c++
 
