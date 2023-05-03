@@ -28,17 +28,19 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	std::string filename = target + "_shrubbery";
-	std::fstream MyFile(filename);
+	std::fstream MyFile;
+
 	try {
 		if (!this->isSigned())
 			throw AForm::NotSignedException();
 		if (executor.getGrade() > this->getExcecutionGrade())
 			throw AForm::GradeTooLowException();
-		// if (!MyFile)
-		// {
-		// 	std::cout << filename << "file couldn't be created" << std::endl;
-		// 	return ;
-		// }
+		MyFile.open(filename, std::fstream::out);
+		if (!MyFile)
+		{
+			std::cout << filename << "file couldn't be created" << std::endl;
+			return ;
+		}
 		MyFile << "               ,@@@@@@@," << std::endl;
 		MyFile << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
 		MyFile << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
