@@ -9,7 +9,6 @@
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string target;
-		std::fstream file;
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
