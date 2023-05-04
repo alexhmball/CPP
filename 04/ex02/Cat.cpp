@@ -18,7 +18,7 @@ Cat::~Cat() {
 }
 
 Cat &Cat::operator=(const Cat &A) {
-	std::cout << "Animal copy assignment operator called\n";
+	std::cout << "Animal copy constructor called\n";
 	if (this != &A)
 	{
 		type = A.type;
