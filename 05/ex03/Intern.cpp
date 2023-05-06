@@ -42,6 +42,6 @@ AForm *Intern::makeForm(std::string request, std::string target) {
 		}
 		delete forms[i];
 	}
-	std::cout << "Intern couldn't create " << request << " no such form exists.\n";
+	std::cout << "Intern couldn't create " << request << " ,no such form exists.\n";
 	return ret;
 }
