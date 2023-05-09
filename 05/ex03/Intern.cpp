@@ -22,26 +22,36 @@ Intern &Intern::operator=(const Intern &I) {
 	return *this;
 }
 
+const char *Intern::NoFormException::what( ) const throw ( ) {
+	return "No such Form.\n";
+}
+
+AForm *Intern::makeRobotomy(std::string target) {
+	return new RobotomyRequestForm(target);
+}
+
+AForm *Intern::makePardon(std::string target) {
+	return new PresidentialPardonForm(target);
+}
+
+AForm *Intern::makeShrubbs(std::string target) {
+	return new ShrubberyCreationForm(target);
+}
+
 AForm *Intern::makeForm(std::string request, std::string target) {
-	forms[0] = new ShrubberyCreationForm(target);
-	forms[1] = new RobotomyRequestForm(target);
-	forms[2] = new PresidentialPardonForm(target);
-	AForm *ret = NULL;
+	makeF ptr[] = {
+		&Intern::makeShrubbs,
+		&Intern::makeRobotomy,
+		&Intern::makePardon,
+	};
 	for (int i = 0; i < 3; i++)
 	{
 		if (request == requests[i])
 		{
-			ret = forms[i];
 			std::cout << "Intern created " << request << " form." << std::endl;
-			for (int j = i; j < 3; j++)
-			{
-				if (j != i)
-					delete forms[i];
-			}
-			return ret;
+			return ((this->*ptr[i])(target));
 		}
-		delete forms[i];
 	}
-	std::cout << "Intern couldn't create " << request << " ,no such form exists.\n";
-	return ret;
+	std::cout << "Intern couldn't create " << request << ", No such form.\n";
+	throw Intern::NoFormException();
 }
