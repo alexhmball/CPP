@@ -1,1 +1,3 @@
 static_cast <dest_type> (source);
+
+data_type *var_name = reinterpret_cast <data_type *>(pointer_variable);

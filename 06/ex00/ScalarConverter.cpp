@@ -335,7 +335,7 @@ void ScalarConverter::infToAll(double d) {
 	f = static_cast<float>(d);
 
 	if (std::numeric_limits<double>::has_infinity)
-		std::cout << "double: " << d << std::endl;
+		printDouble(d);
 	else
 		std::cout << "double: impossible" << std::endl;
 	if (std::numeric_limits<float>::has_infinity)
@@ -374,7 +374,7 @@ void ScalarConverter::inffToAll(float f) {
 	else
 		std::cout << "float: impossible" << std::endl;
 	if (std::numeric_limits<double>::has_infinity)
-		std::cout << "double: " << d << std::endl;
+		printDouble(d);
 	else
 		std::cout << "double: impossible" << std::endl;
 	if (std::numeric_limits<char>::has_infinity)
@@ -400,10 +400,6 @@ float ScalarConverter::negInffToFloat(std::string str) {
 	f = inffToFloat(str) * -1;
 	return f;
 }
-
-// void ScalarConverter::negInfToAll(double d) {
-// 	infToAll(d);
-// }
 
 void ScalarConverter::failure( void ) {
 	std::cout << "char: impossible\n";
