@@ -10,8 +10,8 @@ Base *makeA(void);
 Base *makeB(void);
 Base *makeC(void);
 Base * generate(void);
-// void identify(Base* p);
-// void identify(Base& p);
+void identify(Base* p);
+void identify(Base& p);
 
 
 

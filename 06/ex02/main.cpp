@@ -2,7 +2,8 @@
 
 int main(void) {
 	Base *ya = generate();
-	std::cout << ya;
+	identify(ya);
+	identify(*ya);
 	delete ya;
 	return 0;
 }

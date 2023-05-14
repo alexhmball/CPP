@@ -3,7 +3,7 @@
 void Replacement::replacestr()
 {
 	size_t pos = 0;
-	while ((pos = all.find(str1, pos)) != all.npos)
+	while ((pos = all.find(str1, pos)) != all.npos && str1.empty() == false)
 	{
 		all.erase(pos, str1.length());
 		all.insert(pos, str2);

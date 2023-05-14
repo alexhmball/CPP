@@ -11,7 +11,6 @@ int	main(void) {
 	ShrubberyCreationForm newshrubs("home");
 	RobotomyRequestForm robo("homie");
 
-
 	std::cout << homie;
 	homie.signForm(important);
 	important.execute(homie);
