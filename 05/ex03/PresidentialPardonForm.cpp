@@ -36,7 +36,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what();
+		std::cout << "Couldn't exceute form because " << e.what();
 	}
 }
 

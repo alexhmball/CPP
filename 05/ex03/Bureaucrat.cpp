@@ -91,22 +91,22 @@ const char *Bureaucrat::GradeTooHighException::what() const throw () {
 void Bureaucrat::signForm(AForm &F) {
 	try {
 		F.beSigned(*this);
-		if (!F.isSigned())
-			throw Bureaucrat::GradeTooLowException();
+		// if (!F.isSigned())
+		// 	throw Bureaucrat::GradeTooLowException();
 		std::cout << name << " signed " << F.getName() << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cout << name << " couldn't sign " << F.getName() << " because " << e.what();
+			std::cout << name << " couldn't sign " << F.getName() << " because " << e.what();
 	}
 }
 
 void Bureaucrat::executeForm(AForm const & form) const {
 	try {
-		form.execute(*this);
 		if (!form.isSigned())
 			throw AForm::NotSignedException();
 		if (this->getGrade() > form.getExcecutionGrade())
 			throw AForm::GradeTooLowException();
+		form.execute(*this);
 		std::cout << this->name << " executed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e) {

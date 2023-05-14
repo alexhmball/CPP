@@ -1,15 +1,18 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm( ) : name("CLASSIFIED"), signature(false), signature_grade(50), execute_grade(50) {
+AForm::AForm( )
+	: name("CLASSIFIED"), signature(false), signature_grade(50), execute_grade(50) {
 	std::cout << "AForm default constructor called\n";
 }
 
-AForm::AForm(const std::string name) : name(name), signature(false), signature_grade(50), execute_grade(50) {
+AForm::AForm(const std::string name)
+	: name(name), signature(false), signature_grade(50), execute_grade(50) {
 	std::cout << "AForm constructor called\n";
 }
 
-AForm::AForm( const std::string name, int sig_grade, int exec_grade) : name(name), signature(false), signature_grade(sig_grade), execute_grade(exec_grade) {
+AForm::AForm( const std::string name, int sig_grade, int exec_grade)
+	: name(name), signature(false), signature_grade(sig_grade), execute_grade(exec_grade) {
 	std::cout << "AForm base constructor called\n";
 
 }
@@ -45,6 +48,10 @@ const char * AForm::NotSignedException::what( ) const throw ( ) {
 	return "Form not signed\n";
 }
 
+const char * AForm::NullException::what( ) const throw ( ) {
+	return "Form doesn't exist\n";
+}
+
 std::string AForm::getName( void ) const {
 	return name;
 }
@@ -69,6 +76,7 @@ void AForm::beSigned(Bureaucrat &B) {
 	}
 	catch (std::exception &e) {
 		std::cout << e.what();
+		throw AForm::GradeTooLowException();
 	}
 }
 
