@@ -1,10 +1,10 @@
 NAME = Identify
 
-SRCS =  A.cpp Base.cpp B.cpp C.cpp main.cpp
+SRCS = Base.cpp main.cpp Identify.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INC = A.hpp Base.hpp B.hpp C.hpp
+INC = A.hpp Base.hpp B.hpp C.hpp Identify.hpp
 
 CC = c++
 
@@ -14,11 +14,11 @@ RM = rm -fr
 
 all: $(NAME)
 
-%.o: %.cpp $(INC)
-	$(CC) $(FLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

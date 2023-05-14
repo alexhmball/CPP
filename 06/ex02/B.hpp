@@ -1,9 +1,10 @@
-#ifndef BASE
-#define BASE
+#ifndef B_H
+#define B_H
 
-class Base {
-	public:
-		virtual ~Base();
-}
+#include "Base.hpp"
+
+class B : public Base {
+
+};
 
 #endif
