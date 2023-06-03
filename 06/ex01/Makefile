@@ -8,17 +8,17 @@ INC = Serializer.hpp Data.hpp
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -fr
 
 all: $(NAME)
 
 %.o: %.cpp $(INC)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

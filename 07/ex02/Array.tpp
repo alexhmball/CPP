@@ -48,6 +48,6 @@ size_t Array<T>::size() const {
 template<class T>
 T &Array<T>::operator[](size_t index) {
 	if (index >= this->_size)
-		throw std::out_of_range("Index out of range");
+		throw std::out_of_range("Exception caught, Index out of range");
 	return this->_array[index];
 }

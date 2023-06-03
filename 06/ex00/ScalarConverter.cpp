@@ -39,12 +39,12 @@ bool ScalarConverter::isSpecial(std::string str) {
 void ScalarConverter::convert(std::string str) {
 	if (isSpecial(str))
 		convertSpecail(str);
-	else if (isChar(str))
-		toChar(str);
 	else if (isFloat(str))
 		toFloat(str);
 	else if (isDouble(str))
 		toDouble(str);
+	else if (isChar(str))
+		toChar(str);
 	else if (isInt(str))
 		toInt(str);
 	else
@@ -67,7 +67,10 @@ bool ScalarConverter::isFloat(std::string str) {
 	for (int i = 0; str[i]; i++)
 	{
 		if (!isdigit(str[i]) && str[i] != '.' && str[i] != 'f' && str[i] != '-')
+		{
+			std::cout << str[i] << std::endl;
 			return false;
+		}
 	}
 	if (pos != std::string::npos)
 	{
@@ -125,9 +128,10 @@ int ScalarConverter::toInt(std::string str) {
 
 float ScalarConverter::toFloat(std::string str) {
 	float f;
-	std::istringstream iss (str);
-
+	str = str.substr(0, str.length() - 1);
+	std::istringstream iss(str);
 	iss >> f;
+	std::cout << f << std::endl;
 	if (iss.fail())
 		failure();
 	else

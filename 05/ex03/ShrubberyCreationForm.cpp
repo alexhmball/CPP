@@ -35,7 +35,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 			throw AForm::NotSignedException();
 		if (executor.getGrade() > this->getExcecutionGrade())
 			throw AForm::GradeTooLowException();
-		MyFile.open(filename, std::fstream::out);
+		MyFile.open(&filename[0], std::fstream::out);
 		if (!MyFile)
 		{
 			std::cout << filename << "file couldn't be created" << std::endl;

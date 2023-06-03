@@ -41,6 +41,7 @@ int	main(void) {
 		homie.executeForm(*valid);
 		// homie.executeForm(*invalid);
 		std::cout << homie;
+		delete valid;
 	}
 	catch (std::exception &e)
 	{
