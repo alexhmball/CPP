@@ -4,14 +4,15 @@
 
 #include <iostream>
 #include <algorithm>
-#include <span>
 #include <exception>
+#include <vector>
+#include <climits>
 
 class Span {
 	private:
 		unsigned int N;
 		unsigned int index;
-		int *arr;
+		std::vector<int> arr;
 	public:
 		Span( );
 		Span( unsigned int N );
@@ -21,8 +22,9 @@ class Span {
 		unsigned int getN( void ) const;
 		int getIndex( void ) const;
 		void addNumber( int num );
-		// int shortestSpan( void );
-		// int longestSpan( void );
+		int shortestSpan( void );
+		int longestSpan( void );
+		void addRange(std::vector<int>::iterator it1, std::vector<int>::iterator it2);
 };
 
 #endif

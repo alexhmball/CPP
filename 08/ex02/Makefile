@@ -1,10 +1,10 @@
-NAME = iter
+NAME = MutantStack
 
 SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INC = iter.hpp
+INC = MutantStack.hpp
 
 CC = c++
 
@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
