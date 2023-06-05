@@ -4,11 +4,11 @@ SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INC = MutantStack.hpp
+INC = MutantStack.hpp MutantStack.tpp
 
 CC = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 RM = rm -fr
 
