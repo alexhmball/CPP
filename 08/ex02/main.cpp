@@ -6,9 +6,6 @@
 #include <stack>
 
 int main( void ) {
-	std::stack<int> test;
-
-	test.push(11);
 	MutantStack<int> stack;
     stack.push(21);// The values pushed in the stack should be of the same data which is written during declaration of stack
     stack.push(22);

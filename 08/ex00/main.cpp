@@ -20,7 +20,7 @@ int main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 	try {
-		std::cout << "easyfind(arr, 3): " << *easyfind(arr, 3) << std::endl;
+		std::cout << "easyfind(arr, 4): " << *easyfind(arr, 4) << std::endl;
 		std::cout << "easyfind(arr, 6): " << *easyfind(arr, 6) << std::endl;
 	}
 	catch (std::exception &e) {

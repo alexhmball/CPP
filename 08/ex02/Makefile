@@ -8,7 +8,7 @@ INC = MutantStack.hpp MutantStack.tpp
 
 CC = c++
 
-CXXFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -fr
 
