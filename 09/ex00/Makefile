@@ -1,10 +1,8 @@
-NAME = MutantStack
+NAME=btc
 
-SRCS = main_compare.cpp
+SRCS = btc.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-
-INC = MutantStack.hpp MutantStack.tpp
 
 CC = c++
 

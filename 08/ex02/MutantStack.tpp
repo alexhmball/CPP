@@ -7,7 +7,7 @@ MutantStack<T>::MutantStack( void ) {
 
 template<class T>
 MutantStack<T>::MutantStack( const MutantStack<T> &MS ) {
-	this = MS;
+	*this = MS;
 }
 
 template<class T>

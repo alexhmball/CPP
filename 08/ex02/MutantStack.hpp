@@ -17,7 +17,7 @@ class MutantStack : public std::stack<T> {
 		MutantStack( const MutantStack<T> &MS );
 		~MutantStack( );
 		MutantStack<T> &operator=( const MutantStack<T> &MS );
-		iterator begin( void);
+		iterator begin( void );
 		const_iterator begin( void ) const;
 		iterator end( void );
 		const_iterator end( void ) const;

@@ -7,24 +7,29 @@
 
 int main( void ) {
 	MutantStack<int> stack;
-    stack.push(21);// The values pushed in the stack should be of the same data which is written during declaration of stack
+    stack.push(21);
     stack.push(22);
     stack.push(24);
     stack.push(25);
     int num=0;
     stack.push(num);
+	const MutantStack<int> stackcopy(stack);
 	std::cout << stack.size() << std::endl;
 	MutantStack<int>::iterator it = stack.begin();
+	MutantStack<int>::const_reverse_iterator itc = stackcopy.rbegin();
 	for (unsigned long i = 0; i < stack.size(); i++)
 	{
-		std::cout << *it << std::endl;
+		// *itc += 10;
+		std::cout << "stack: " << *it << std::endl;
+		std::cout << "stack copy: " << *itc << std::endl;
 		it++;
+		itc++;
 	}
     stack.pop();
     stack.pop();
     stack.pop();
 	std::cout << *stack.begin() << std::endl;
-	std::cout << *stack.end() << std::endl;
+	std::cout << *(stack.end() - 1) << std::endl;
     while (!stack.empty()) {
         std::cout << stack.top() <<" ";
         stack.pop();

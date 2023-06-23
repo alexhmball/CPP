@@ -93,12 +93,13 @@ void Span::addRange(std::vector<int>::iterator it1, std::vector<int>::iterator i
 	try {
 		if (index >= N)
 			throw std::out_of_range("span is already full");
-		for (it1 = it1; it1 < it2; it1++)
+		while (it1 < it2)
 		{
 			if (index >= N)
 				throw std::out_of_range("span is full");
 			arr[index] = *it1;
 			index++;
+			it1++;
 		}
 	}
 	catch (std::exception &e) {

@@ -1,10 +1,8 @@
-NAME = MutantStack
+NAME=RPN
 
-SRCS = main_compare.cpp
+SRCS = RPN.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-
-INC = MutantStack.hpp MutantStack.tpp
 
 CC = c++
 
