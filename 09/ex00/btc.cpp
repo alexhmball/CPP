@@ -18,14 +18,14 @@ bool fill_db(std::map<std::string, float> &data_base, std::string file, std::str
 		std::cerr << "couldn't open database\n";
 		return false;
 	}
+	std::getline(data, tmp);
 	while (std::getline(data, tmp)) {
 		key = tmp.substr(0, tmp.find(delim));
 		tmp_val = tmp.substr(tmp.find(delim) + 1, tmp.length());
 		std::istringstream iss (tmp_val);
 
 		iss >> value;
-		if (key != "date")
-			data_base.insert(std::pair<std::string, float>(key, value));
+		data_base.insert(std::pair<std::string, float>(key, value));
 	}
 	return true;
 }
@@ -33,6 +33,8 @@ bool fill_db(std::map<std::string, float> &data_base, std::string file, std::str
 bool validate_key( std::string key ) {
 	struct tm tm;
 	if (!strptime(key.c_str(), "%Y-%m-%d", &tm))
+		return false;
+	if (tm.tm_year + 1900 < 2009)
 		return false;
 	return true;
 }

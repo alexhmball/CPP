@@ -1,6 +1,6 @@
-NAME=RPN
+NAME=PmergeMe
 
-SRCS = rpn.cpp
+SRCS = merge.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
