@@ -1,6 +1,6 @@
 NAME=btc
 
-SRCS = btc.cpp
+SRCS = main.cpp BitcoinExchange.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,10 +1,4 @@
-#include <map>
-#include <algorithm>
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
+#include "BitcoinExchange.hpp"
 
 bool fill_db(std::map<std::string, float> &data_base, std::string file, std::string delim) {
 	std::string tmp;
@@ -90,15 +84,4 @@ void find_input(std::map<std::string, float> &data_base, std::string file) {
 				std::cout << key << " => " << value << " = " << (value * (--it)->second) << std::endl;
 		}
 	}
-}
-
-int main( int ac, char **av ) {
-	std::map<std::string, float> data_base;
-	if (ac > 1) {
-		if (fill_db(data_base, "data.csv", ","))
-			find_input(data_base, av[1]);
-	} else {
-		std::cerr << "Error: couldn't open file" << std::endl;
-	}
-	return 0;
 }

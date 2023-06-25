@@ -1,7 +1,4 @@
-#include <vector>
-#include <algorithm>
-#include <iostream>
-#include <sstream>
+#include "RPN.hpp"
 
 bool add(std::vector<int> &rpn) {
 	if (rpn.size() < 2)
@@ -10,6 +7,7 @@ bool add(std::vector<int> &rpn) {
 	rpn.pop_back();
 	return true;
 }
+
 bool subtract(std::vector<int> &rpn) {
 	if (rpn.size() < 2)
 		return false;
@@ -17,6 +15,7 @@ bool subtract(std::vector<int> &rpn) {
 	rpn.pop_back();
 	return true;
 }
+
 bool divide(std::vector<int> &rpn) {
 	if (rpn.size() < 2)
 		return false;
@@ -24,6 +23,7 @@ bool divide(std::vector<int> &rpn) {
 	rpn.pop_back();
 	return true;
 }
+
 bool multiply(std::vector<int> &rpn) {
 	if (rpn.size() < 2)
 		return false;
@@ -56,6 +56,14 @@ bool check_sign(std::vector<int> &rpn, std::string tmp) {
 	return true;
 }
 
+bool check_decimal(std::string str) {
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!isdigit(str[i]) && str[i] != '-' && !isspace(str[i]))
+			return false;
+	}
+	return true;
+}
+
 void calc(std::string str) {
 	std::vector<int> rpn;
 	std::string tmp;
@@ -79,8 +87,10 @@ void calc(std::string str) {
 				std::cout << "Error" << std::endl;
 				return ;
 			}
-		}
-		else
+		} else if (insert >= 10 || !check_decimal(tmp)) {
+			std::cout << "Error" << std::endl;
+			return ;
+		} else
 			rpn.push_back(insert);
 		if (str[i])
 			i++;
@@ -95,19 +105,4 @@ bool is_arithmetic(char c) {
 	if (c == '+' || c == '-' || c == '/' || c == '*')
 		return true;
 	return false;
-}
-
-int main (int ac, char **av) {
-	std::string str;
-
-	if (ac > 1) {
-		for (int i = 1; av[i]; i++) {
-			str += &av[i][0];
-			str += " ";
-		}
-		calc(str);
-	} else {
-		std::cout << "Error" << std::endl;
-	}
-	return 0;
 }
