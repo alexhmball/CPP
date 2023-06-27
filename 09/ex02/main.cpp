@@ -20,6 +20,43 @@ bool check_sign(std::string tmp) {
 	return true;
 }
 
+void swap(size_t &a, size_t &b) {
+	size_t tmp = a;
+	a = b;
+	b = tmp;
+}
+
+void deque_sort_pair(std::deque<std::pair<size_t, size_t> > &paired, int n, int index = 0) {
+	if (index == n)
+		return ;
+	int k = minIndex(paired, index, n - 1);
+	if (k != index)
+		swap(paired[k], paired[index]);
+}
+
+void deque_pair(std::deque<size_t> arr) {
+	std::deque<std::pair<size_t, size_t> > paired;
+	size_t extra;
+	int flag = 0;
+	(void)extra;
+	(void)flag;
+
+	for (size_t i = 0; i < arr.size(); i += 2) {
+		if (i + 1 == arr.size()) {
+			flag = 1;
+			extra = arr[i + 1];
+			break ;
+		}
+		if (arr[i] > arr[i + 1])
+			paired.push_back(std::pair<size_t, size_t>(arr[i], arr[i + 1]));
+		else if (arr[i] < arr[i + 1])
+			paired.push_back(std::pair<size_t, size_t>(arr[i + 1], arr[i]));
+	}
+	for (size_t i = 0; i < paired.size(); i++)
+		std::cout << paired[i].first << " " << paired[i].second << " ";
+	std::cout << std::endl;
+}
+
 bool check_sort(std::string str) {
 	std::deque<size_t> check;
 	std::string tmp;
@@ -38,7 +75,6 @@ bool check_sort(std::string str) {
 		tmp = str.substr(pos1, pos2 - pos1);
 		std::stringstream ss(tmp);
 		ss >> num;
-		std::cout << tmp << std::endl;
 		if ((ss.fail() && !check_space(tmp)) || !check_sign(tmp))
 			return false;
 		else if (!check_space(tmp))
