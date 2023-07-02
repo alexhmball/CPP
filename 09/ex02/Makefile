@@ -6,7 +6,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 RM = rm -fr
 
