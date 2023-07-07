@@ -16,20 +16,14 @@ bool check_sign(std::string tmp) {
 	return true;
 }
 
-template <typename T>
-void swap(T &a, T &b) {
-	T tmp = a;
-	a = b;
-	b = tmp;
-}
-
-void my_iter_swap(std::list<std::pair<size_t, size_t> >::iterator a, std::list<std::pair<size_t, size_t> >::iterator b) {
-	std::list<std::pair<size_t, size_t> > temp;
-	temp.push_back(std::pair<size_t, size_t>(1, 1));
-	std::list<std::pair<size_t, size_t> >::iterator tmp = temp.begin();
-	*tmp = *a;
-	*a = *b;
-	*b = *tmp;
+template< class InputIt >
+InputIt my_next( InputIt it, typename std::iterator_traits<InputIt>::difference_type n) {
+	typename std::iterator_traits<InputIt>::difference_type i = 0;
+	while (i < n) {
+		it++;
+		i++;
+	}
+	return it;
 }
 
 int minIndex(std::deque<std::pair<size_t, size_t> > &paired, int i, int j)
@@ -45,7 +39,7 @@ void deque_sort_pair(std::deque<std::pair<size_t, size_t> > &paired, size_t n, s
 		return ;
 	size_t k = minIndex(paired, index, n - 1);
 	if (k != index)
-		swap(paired[k], paired[index]);
+		std::swap(paired[k], paired[index]);
 	deque_sort_pair(paired, n, index + 1);
 }
 
@@ -54,7 +48,7 @@ size_t minIndex(std::list<std::pair<size_t, size_t> > &paired, size_t i, size_t 
 	if (i == j)
 		return i;
 	size_t k = minIndex(paired, i + 1, j);
-	return (*std::next(paired.begin(), i) < *std::next(paired.begin(), k))? i : k;
+	return (*my_next(paired.begin(), i) < *my_next(paired.begin(), k))? i : k;
 }
 
 void list_sort_pair(std::list<std::pair<size_t, size_t> > &paired, size_t n, size_t index) {
@@ -62,13 +56,13 @@ void list_sort_pair(std::list<std::pair<size_t, size_t> > &paired, size_t n, siz
 		return ;
 	size_t k = minIndex(paired, index, n - 1);
 	if (k != index)
-		my_iter_swap(std::next(paired.begin(), k), std::next(paired.begin(), index));
+		std::iter_swap(my_next(paired.begin(), k), my_next(paired.begin(), index));
 	list_sort_pair(paired, n, index + 1);
 }
 
 size_t deque_binarySearch(std::deque<size_t> arr, size_t item, int low, int high)
 {
-	while (low <= high) {
+	while (low <= high && high > 0) {
 		int mid = low + (high - low) / 2;
 		if (item == arr[mid])
 			return mid + 1;
@@ -84,16 +78,16 @@ std::list<size_t>::iterator list_binarySearch(std::list<size_t> &arr, size_t ite
 {
 	while (low <= high) {
 		int mid = low + (high - low) / 2;
-		if (item == *std::next(arr.begin(), mid))
-			return std::next(arr.begin(), mid + 1);
-		else if (item > *std::next(arr.begin(), mid))
+		if (item == *my_next(arr.begin(), mid))
+			return my_next(arr.begin(), mid + 1);
+		else if (item > *my_next(arr.begin(), mid))
 			low = mid + 1;
 		else
 			high = mid - 1;
 	}
 	if (low > (int)arr.size())
 		return arr.end();
-	return std::next(arr.begin(), low);
+	return my_next(arr.begin(), low);
 }
 
 void list_insert_sort(std::list<size_t> &sorted, std::list<std::pair<size_t, size_t> > &paired, int flag, size_t extra) {

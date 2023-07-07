@@ -61,14 +61,15 @@ void find_input(std::map<std::string, float> &data_base, std::string file) {
 		std::cerr << "couldn't open input file\n";
 		return ;
 	}
-	std::getline(data, tmp);
 	while (std::getline(data, tmp)) {
 		key = tmp.substr(0, tmp.find("|") - 1);
 		tmp_val = tmp.substr(tmp.find("|") + 1, tmp.length());
 		std::istringstream iss (tmp_val);
 
 		iss >> value;
-		if (tmp.find("|") == std::string::npos || !validate_key(key))
+		if (key == "date" && (tmp_val == " value"))
+			continue;
+		else if (tmp.find("|") == std::string::npos || !validate_key(key))
 			std::cerr << "Error: bad input => " << key << std::endl;
 		else if (value < 0)
 			std::cerr << "Error: not a positive number." << std::endl;
