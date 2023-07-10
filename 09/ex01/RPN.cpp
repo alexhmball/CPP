@@ -19,6 +19,8 @@ bool subtract(std::vector<int> &rpn) {
 bool divide(std::vector<int> &rpn) {
 	if (rpn.size() < 2)
 		return false;
+	if (rpn.back() == 0)
+		return false;
 	rpn[rpn.size() - 2] /= rpn.back();
 	rpn.pop_back();
 	return true;

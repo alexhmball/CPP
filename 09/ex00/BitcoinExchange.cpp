@@ -35,13 +35,15 @@ bool validate_key( std::string key ) {
 
 bool validate_value(std::string val) {
 	try {
-		val.erase(val.find_first_of(" "), val.find_last_of(" "));
+		val = val.substr(val.find_first_not_of(" "), val.find_last_not_of(" "));
 	} catch (std::exception &e) {
 		return false;
 	}
 	if (val.length() == 1 && !isdigit(val[0]))
 		return false;
-	for (size_t i = 0; i < val.length(); i++) {
+	if (val[0] != '+' && !isdigit(val[0]))
+		return false;
+	for (size_t i = 1; i < val.length(); i++) {
 		if (!isdigit(val[i]) && val[i] != '.' && !isspace(val[i]))
 			return false;
 	}

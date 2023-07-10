@@ -62,7 +62,7 @@ void list_sort_pair(std::list<std::pair<size_t, size_t> > &paired, size_t n, siz
 
 size_t deque_binarySearch(std::deque<size_t> arr, size_t item, int low, int high)
 {
-	while (low <= high && high > 0) {
+	while (low <= high && low >= 0) {
 		int mid = low + (high - low) / 2;
 		if (item == arr[mid])
 			return mid + 1;
@@ -112,7 +112,10 @@ void deque_insert(std::deque<size_t> &sorted, std::deque<std::pair<size_t, size_
 	if (flag) {
 		size_t pos = deque_binarySearch(sorted, extra, 0, sorted.size());
 		std::deque<size_t>::iterator loc(sorted.begin() + pos);
-		sorted.insert(loc, extra);
+		if (pos - 1 == sorted.size())
+			sorted.push_back(extra);
+		else
+			sorted.insert(loc, extra);
 	}
 }
 
