@@ -10,7 +10,7 @@ bool check_space(std::string tmp) {
 
 bool check_sign(std::string tmp) {
 	for (size_t i = 0; i < tmp.length(); i++) {
-		if (!isdigit(tmp[i]))
+		if (!isdigit(tmp[i]) && tmp[i] != '+')
 			return false;
 	}
 	return true;
