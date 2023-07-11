@@ -60,7 +60,7 @@ bool check_sign(std::vector<int> &rpn, std::string tmp) {
 
 bool check_decimal(std::string str) {
 	for (size_t i = 0; i < str.length(); i++) {
-		if (!isdigit(str[i]) && str[i] != '-' && !isspace(str[i]))
+		if (!isdigit(str[i]) && str[i] != '-' && !isspace(str[i]) && str[i] != '+')
 			return false;
 	}
 	return true;
