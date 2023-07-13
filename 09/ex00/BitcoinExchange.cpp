@@ -24,11 +24,46 @@ bool fill_db(std::map<std::string, float> &data_base, std::string file, std::str
 	return true;
 }
 
+bool calculate_leapyear( struct tm tm ) {
+	float y4 = tm.tm_year / 4.0;
+	float y100 = tm.tm_year / 100.0;
+	float y400 = tm.tm_year / 400.0;
+
+	if (tm.tm_mon == 2 && tm.tm_mday == 29) {
+		if (y4 - floor(y4) == 0.0) {
+			if (y100 - floor(y100) == 0.0) {
+				if (y400 - floor(y400) != 0.0)
+					return false;
+				return true;
+			}
+			if (y400 - floor(y400) != 0.0)
+				return true;
+			return false;
+		}
+		return false;
+	}
+	return true;
+}
+
 bool validate_key( std::string key ) {
 	struct tm tm;
 	if (!strptime(key.c_str(), "%Y-%m-%d", &tm))
 		return false;
-	if (tm.tm_year + 1900 < 2009)
+	tm.tm_year += 1900;
+	if (tm.tm_year < 2009)
+		return false;
+	tm.tm_mon += 1;
+	if (tm.tm_mon < 8 && tm.tm_mon % 2 != 0 && tm.tm_mday > 31)
+		return false;
+	if (tm.tm_mon >= 8 && tm.tm_mon % 2 == 0 && tm.tm_mday > 31)
+		return false;
+	if (tm.tm_mon < 8 && tm.tm_mon % 2 == 0 && tm.tm_mday > 30)
+		return false;
+	if (tm.tm_mon >= 8 && tm.tm_mon % 2 != 0 && tm.tm_mday > 31)
+		return false;
+	if (tm.tm_mon == 2 && tm.tm_mday > 29)
+		return false;
+	if (!calculate_leapyear(tm))
 		return false;
 	return true;
 }
@@ -56,7 +91,6 @@ void find_input(std::map<std::string, float> &data_base, std::string file) {
 	std::string tmp_val;
 	float value;
 	std::fstream data;
-	char *end;
 
 	data.open(&file[0]);
 	if (!data.is_open()) {
@@ -77,7 +111,7 @@ void find_input(std::map<std::string, float> &data_base, std::string file) {
 			std::cerr << "Error: not a positive number." << std::endl;
 		else if (!validate_value(tmp_val))
 			std::cerr << "Error: bad input => " << tmp_val << std::endl;
-		else if (std::strtoul(&tmp_val[0], &end, tmp_val.length()) > 1000)
+		else if (value > 1000)
 			std::cerr << "Error: too large a number." << std::endl;
 		else {
 			std::map<std::string, float>::iterator it = data_base.upper_bound(key);
