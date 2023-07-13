@@ -59,7 +59,7 @@ bool validate_key( std::string key ) {
 		return false;
 	if (tm.tm_mon < 8 && tm.tm_mon % 2 == 0 && tm.tm_mday > 30)
 		return false;
-	if (tm.tm_mon >= 8 && tm.tm_mon % 2 != 0 && tm.tm_mday > 31)
+	if (tm.tm_mon >= 8 && tm.tm_mon % 2 != 0 && tm.tm_mday > 30)
 		return false;
 	if (tm.tm_mon == 2 && tm.tm_mday > 29)
 		return false;
